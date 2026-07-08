@@ -1,0 +1,3 @@
+<a href="/profile">
+	👤 Profile
+</a>
