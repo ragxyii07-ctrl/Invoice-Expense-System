@@ -95,19 +95,19 @@
 				</div>
 
 				<div class="overflow-x-auto">
-					<div class="flex min-w-175 items-end gap-8 border-b border-slate-200 pb-4">
-						{#each months as month, i}
+					<div class="flex min-w-[700px] items-end gap-8 border-b border-slate-200 pb-4">
+						{#each months as month, i (month)}
 							<div class="flex flex-col items-center gap-3">
 								<div class="flex h-52 items-end gap-2">
 									<div
 										class="w-6 rounded-t-xl bg-blue-600"
-										style={`height: ${barHeight(monthlyRevenue[i])}px`}
+										style:height={`${barHeight(monthlyRevenue[i])}px`}
 										title={`Revenue ${formatCurrency(monthlyRevenue[i])}`}
 									></div>
 
 									<div
 										class="w-6 rounded-t-xl bg-red-500"
-										style={`height: ${barHeight(monthlyExpenses[i])}px`}
+										style:height={`${barHeight(monthlyExpenses[i])}px`}
 										title={`Expense ${formatCurrency(monthlyExpenses[i])}`}
 									></div>
 								</div>
