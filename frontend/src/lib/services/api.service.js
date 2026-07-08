@@ -1,7 +1,7 @@
-import { auth } from '$lib/firebase/firebase';
 import { PUBLIC_API_URL } from '$env/static/public';
+import { auth } from '$lib/firebase/firebase';
 
-const API_BASE_URL = "http ://localhost :5000/api"
+const API_BASE_URL = PUBLIC_API_URL;
 
 export async function apiRequest(endpoint, options = {}) {
 	const user = auth.currentUser;
