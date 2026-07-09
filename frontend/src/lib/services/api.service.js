@@ -1,6 +1,6 @@
 import { auth } from '$lib/firebase/firebase';
 
-const API_BASE_URL = 'https://invoice-expense-system.onrender.com/api';
+const BASE_URL = "https://invoice-expense-system.onrender.com";
 
 export async function apiRequest(endpoint, options = {}) {
 	const user = auth.currentUser;
