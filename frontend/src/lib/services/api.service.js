@@ -1,7 +1,6 @@
-import { PUBLIC_API_URL } from '$env/static/public';
 import { auth } from '$lib/firebase/firebase';
 
-const API_BASE_URL = PUBLIC_API_URL;
+const API_BASE_URL = 'https://invoice-expense-system.onrender.com/api';
 
 export async function apiRequest(endpoint, options = {}) {
 	const user = auth.currentUser;
