@@ -1,19 +1,23 @@
 const { initializeApp, getApps, cert } = require('firebase-admin/app');
 const { getFirestore } = require('firebase-admin/firestore');
 const { getAuth } = require('firebase-admin/auth');
-const path = require('path');
 
-const serviceAccount = require(path.join(__dirname, 'firebase-service-account.json'));
+const serviceAccount = {
+	projectId: process.env.FIREBASE_PROJECT_ID,
+	clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+	privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n')
+};
 
-console.log('Firebase Project ID:', serviceAccount.project_id);
+console.log('Firebase Project ID:', serviceAccount.projectId);
 
-if (!serviceAccount.project_id || !serviceAccount.client_email || !serviceAccount.private_key) {
-	throw new Error('Invalid Firebase service account JSON file');
+if (!serviceAccount.projectId || !serviceAccount.clientEmail || !serviceAccount.privateKey) {
+	throw new Error('Missing Firebase Admin environment variables');
 }
 
 if (!getApps().length) {
 	initializeApp({
-		credential: cert(serviceAccount)
+		credential: cert(serviceAccount),
+		storageBucket: process.env.FIREBASE_STORAGE_BUCKET
 	});
 }
 
