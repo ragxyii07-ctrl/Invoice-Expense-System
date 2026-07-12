@@ -23,44 +23,43 @@
 	let forgotLoading = $state(false);
 
 	async function handleLogin() {
-	error = '';
-	forgotMessage = '';
+		error = '';
+		forgotMessage = '';
 
-	if (!email || !password) {
-		error = 'Email and password are required';
-		return;
-	}
-
-	try {
-		loading = true;
-
-		await loginUser(email, password);
-
-		const user = auth.currentUser;
-
-		welcomeName = user?.displayName || user?.email?.split('@')[0] || email;
-
-		try {
-			if (user?.uid) {
-				const settings = await getBusinessSettings(user.uid);
-				welcomeLogo = settings?.logoUrl || '';
-				welcomeName = settings?.ownerName || welcomeName;
-			}
-		} catch {
-			welcomeLogo = '';
+		if (!email || !password) {
+			error = 'Email and password are required';
+			return;
 		}
 
-		loading = false;
-		showWelcome = true;
+		try {
+			loading = true;
 
-		setTimeout(() => {
-			goto('/dashboard', { replaceState: true });
-		}, 2000);
-	} catch (err) {
-		error = err.message || 'Invalid email or password';
-		loading = false;
+			await loginUser(email, password);
+			goto('/welcome', { replaceState: true });
+
+			welcomeName = user?.displayName || user?.email?.split('@')[0] || email;
+
+			try {
+				if (user?.uid) {
+					const settings = await getBusinessSettings(user.uid);
+					welcomeLogo = settings?.logoUrl || '';
+					welcomeName = settings?.ownerName || welcomeName;
+				}
+			} catch {
+				welcomeLogo = '';
+			}
+
+			loading = false;
+			showWelcome = true;
+
+			setTimeout(() => {
+				goto('/dashboard', { replaceState: true });
+			}, 2000);
+		} catch (err) {
+			error = err.message || 'Invalid email or password';
+			loading = false;
+		}
 	}
-}
 
 	async function handleForgotPassword() {
 		error = '';
@@ -88,9 +87,9 @@
 	}
 </script>
 
-{#if showWelcome}
+{#if showWelcome} 
 	<section
-		class="flex min-h-screen items-center justify-center overflow-hidden bg-linear-to-br from-blue-600 via-indigo-600 to-purple-700 px-4"
+		class="flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 px-4"
 	>
 		<div class="absolute h-72 w-72 rounded-full bg-white/20 blur-3xl"></div>
 		<div class="absolute bottom-10 right-10 h-56 w-56 rounded-full bg-cyan-300/20 blur-3xl"></div>
@@ -121,6 +120,8 @@
 			<div class="mx-auto mt-8 h-2 w-56 overflow-hidden rounded-full bg-white/30">
 				<div class="h-full w-full animate-pulse rounded-full bg-white"></div>
 			</div>
+
+			<p class="mt-4 text-sm text-blue-100">Opening your dashboard...</p>
 		</div>
 	</section>
 {:else}

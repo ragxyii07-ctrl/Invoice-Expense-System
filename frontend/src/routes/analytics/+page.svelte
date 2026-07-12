@@ -95,7 +95,7 @@
 				</div>
 
 				<div class="overflow-x-auto">
-					<div class="flex min-w-175 items-end gap-8 border-b border-slate-200 pb-4">
+					<div class="flex min-w-[700px] items-end gap-8 border-b border-slate-200 pb-4">
 						{#each months as month, i (month)}
 							<div class="flex flex-col items-center gap-3">
 								<div class="flex h-52 items-end gap-2">
