@@ -19,7 +19,7 @@
 	});
 </script>
 
-<section class="flex min-h-screen items-center justify-center bg-gradient-to-br from-red-600 via-orange-500 to-yellow-400 px-4">
+<section class="flex min-h-screen items-center justify-center bg-linear-to-br from-red-600 via-orange-500 to-yellow-400 px-4">
 	<div class="w-full max-w-lg rounded-3xl bg-white p-10 text-center shadow-2xl">
 		<div class="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-red-100 text-red-600">
 			<ShieldAlert size={50} />

@@ -29,7 +29,7 @@
 	});
 </script>
 
-<section class="flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 px-4">
+<section class="flex min-h-screen items-center justify-center overflow-hidden bg-linear-to-br from-blue-600 via-indigo-600 to-purple-700 px-4">
 	<div class="absolute h-72 w-72 rounded-full bg-white/20 blur-3xl"></div>
 	<div class="absolute bottom-10 right-10 h-56 w-56 rounded-full bg-cyan-300/20 blur-3xl"></div>
 
